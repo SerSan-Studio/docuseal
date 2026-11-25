@@ -105,7 +105,12 @@
         href="https://www.docuseal.com/start"
         target="_blank"
         class="underline"
-      >DocuSeal</a> - {{ t('open_source_documents_software') }}
+      >DocuSeal</a> - {{ t('open_source_documents_software') }} ·
+      <a
+        href="https://github.com/SerSan-Studio/docuseal"
+        target="_blank"
+        class="underline"
+      >Codice sorgente</a>
     </div>
   </div>
 </template>

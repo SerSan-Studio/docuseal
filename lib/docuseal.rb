@@ -4,9 +4,9 @@ module Docuseal
   PRODUCT_URL = 'https://www.docuseal.com'
   PRODUCT_EMAIL_URL = ENV.fetch('PRODUCT_EMAIL_URL', PRODUCT_URL)
   NEWSLETTER_URL = "#{PRODUCT_URL}/newsletters".freeze
-  PRODUCT_NAME = 'DocuSeal'
+  PRODUCT_NAME = 'SerSan Sign'
   DEFAULT_APP_URL = ENV.fetch('APP_URL', 'http://localhost:3000')
-  GITHUB_URL = 'https://github.com/docusealco/docuseal'
+  GITHUB_URL = 'https://github.com/SerSan-Studio/docuseal'
   DISCORD_URL = 'https://discord.gg/qygYCDGck9'
   TWITTER_URL = 'https://twitter.com/docusealco'
   TWITTER_HANDLE = '@docusealco'
