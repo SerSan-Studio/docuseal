@@ -43,7 +43,7 @@ RSpec.describe 'App Setup' do
       expect(user.last_name).to eq(form_data[:last_name])
       expect(user.email).to eq(form_data[:email])
       expect(user.account.timezone).to eq('UTC')
-      expect(user.account.locale).to eq('en-US')
+      expect(user.account.locale).to eq('it-IT')
       expect(user.account.name).to eq(form_data[:company_name])
       expect(encrypted_config_app_url.value).to eq(form_data[:app_url])
       expect(encrypted_config_esign_certs.value).to be_present

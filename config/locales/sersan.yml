@@ -1,0 +1,31 @@
+# SerSan: scritte nostre, che DocuSeal non ha (vedi SERSAN.md). Se una lingua manca, si va sull'inglese.
+en:
+  sersan_source_code: Source code
+it:
+  sersan_source_code: Codice sorgente
+ru:
+  sersan_source_code: Исходный код
+es:
+  sersan_source_code: Código fuente
+fr:
+  sersan_source_code: Code source
+de:
+  sersan_source_code: Quellcode
+pt:
+  sersan_source_code: Código-fonte
+nl:
+  sersan_source_code: Broncode
+pl:
+  sersan_source_code: Kod źródłowy
+uk:
+  sersan_source_code: Вихідний код
+cs:
+  sersan_source_code: Zdrojový kód
+he:
+  sersan_source_code: קוד מקור
+ar:
+  sersan_source_code: الشيفرة المصدرية
+ko:
+  sersan_source_code: 소스 코드
+ja:
+  sersan_source_code: ソースコード

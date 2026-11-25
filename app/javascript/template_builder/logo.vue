@@ -1,6 +1,6 @@
 <template>
   <img
-    src="/sersan-logo.png"
+    src="/sersan-logo.svg"
     alt="SerSan"
     height="40"
     width="40"

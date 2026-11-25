@@ -1,3 +1,5 @@
+import ru from './i18n_ru'
+
 const en = {
   name: 'Name',
   fixed: 'Fixed',
@@ -2042,4 +2044,4 @@ const nl = {
   irregular_table_structure: 'Rijen en kolommen niet bewerkbaar: onregelmatige tabel'
 }
 
-export { en, es, it, pt, fr, de, nl }
+export { en, es, it, pt, fr, de, nl, ru }

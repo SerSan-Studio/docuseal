@@ -692,7 +692,7 @@ export default {
     },
     numberFormats () {
       const formats = ['none', 'usd', 'eur', 'gbp', 'comma', 'dot', 'space']
-      const spaceLocales = ['fr-FR', 'es-ES', 'pt-PT', 'de-DE', 'it-IT', 'nl-NL']
+      const spaceLocales = ['fr-FR', 'es-ES', 'pt-PT', 'de-DE', 'it-IT', 'nl-NL', 'ru-RU']
 
       formats.push(spaceLocales.includes(this.locale) ? 'percent_space' : 'percent')
 

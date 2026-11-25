@@ -1,3 +1,5 @@
+import ru from './i18n_ru'
+
 const en = {
   step: 'Step',
   form_progress: 'Form progress',
@@ -89,6 +91,7 @@ const en = {
   powered_by: 'Powered by',
   please_check_the_box_to_continue: 'Please check the box to continue.',
   open_source_documents_software: 'open source documents software',
+  sersan_source_code: 'Source code',
   verified_phone_number: 'Verify Phone Number',
   country_code: 'Country code',
   use_international_format: 'Use international format: +1xxx',
@@ -329,6 +332,7 @@ const it = {
   powered_by: 'Fornito da',
   please_check_the_box_to_continue: 'Si prega di spuntare la casella per continuare.',
   open_source_documents_software: 'software di documenti open source',
+  sersan_source_code: 'Codice sorgente',
   verified_phone_number: 'Verifica numero di telefono',
   country_code: 'Prefisso internazionale',
   use_international_format: 'Usa formato internazionale: +1xxx',
@@ -1678,6 +1682,6 @@ const ja = {
   enter_screen_reader_mode: 'スクリーンリーダーモードを有効にする'
 }
 
-const i18n = { en, es, it, de, fr, pl, uk, cs, pt, he, nl, ar, ko, ja }
+const i18n = { en, es, it, de, fr, pl, uk, cs, pt, he, nl, ar, ko, ja, ru }
 
 export default i18n

@@ -110,7 +110,7 @@
         href="https://github.com/SerSan-Studio/docuseal"
         target="_blank"
         class="underline"
-      >Codice sorgente</a>
+      >{{ t('sersan_source_code') }}</a>
     </div>
   </div>
 </template>

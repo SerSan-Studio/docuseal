@@ -1482,7 +1482,8 @@ export default {
         'fr-FR': 'DD/MM/YYYY',
         'it-IT': 'DD/MM/YYYY',
         'en-GB': 'DD/MM/YYYY',
-        'es-ES': 'DD/MM/YYYY'
+        'es-ES': 'DD/MM/YYYY',
+        'ru-RU': 'DD.MM.YYYY'
       }
     },
     fieldAreasIndex () {
