@@ -11,7 +11,7 @@ Questo repository è il fork di [DocuSeal](https://github.com/docusealco/docusea
 
 - **`master`:** copia di DocuSeal, senza modifiche. Si aggiorna con «Sync fork» su GitHub o con `git fetch upstream`.
 - **`sersan`**, il ramo predefinito: una release di DocuSeal più le modifiche SerSan. Oggi la base è **3.4.0**.
-- **Tag `sersan-<versione DocuSeal>-<n>`**, per esempio `sersan-3.4.0-1`. Ogni tag costruisce l'immagine `ghcr.io/sersan-studio/docuseal:<tag>` (`.github/workflows/sersan-image.yml`). Il workflow `docker.yml` di DocuSeal (Docker Hub) in questo fork è spento.
+- **Tag `sersan-<versione DocuSeal>-<n>`**, per esempio `sersan-3.4.0-1`. Ogni tag costruisce l'immagine `ghcr.io/sersan-studio/docuseal:<tag>`, privata, e la lascia anche come artefatto del workflow per 7 giorni (`.github/workflows/sersan-image.yml`). Il server non ha credenziali di GitHub: l'immagine gli arriva dall'artefatto, con `docker load`. Il workflow `docker.yml` di DocuSeal (Docker Hub) in questo fork è spento.
 
 ## Cosa cambia rispetto a DocuSeal
 
@@ -40,7 +40,7 @@ sersan/genera-icone.sh                 # solo se upstream ha cambiato icone o lo
 grep -rn "DocuSeal" app/views app/javascript lib --include='*.erb' --include='*.vue' --include='*.rb' | grep -v -i "powered\|attribution"   # scritte nuove?
 git commit -am "SerSan: DocuSeal 3.4.1"
 git push origin sersan
-git tag sersan-3.4.1-1 && git push origin sersan-3.4.1-1      # costruisce l'immagine (Actions, circa 15 minuti)
+git tag sersan-3.4.1-1 && git push origin sersan-3.4.1-1      # costruisce l'immagine (Actions, pochi minuti)
 ```
 
 Poi sul server si cambia il tag dell'immagine nel Compose: `docker compose pull && docker compose up -d`. Le migrazioni del database partono da sole all'avvio. Prima, un dump del database.

@@ -1,4 +1,6 @@
-# SerSan: immagine Docker del fork, su GitHub Container Registry (ghcr.io/sersan-studio/docuseal).
+# SerSan: immagine Docker del fork, su GitHub Container Registry (ghcr.io/sersan-studio/docuseal, PRIVATA).
+# Il server non ha credenziali di GitHub: l'immagine arriva come artefatto (docker save, 7 giorni) che si scarica
+# con `gh run download` e si carica con `docker load` (docs interne SerSan, docuseal.md).
 # Parte con un tag sersan-* (per esempio sersan-3.4.0-1) o a mano. Vedi SERSAN.md.
 # Il workflow docker.yml di DocuSeal (Docker Hub, segreti loro) in questo fork è spento.
 name: SerSan image
@@ -43,3 +45,19 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Immagine come artefatto (per il server, che non ha credenziali di GitHub)
+        run: |
+          docker pull "ghcr.io/sersan-studio/docuseal:${GITHUB_REF_NAME}"
+          docker save "ghcr.io/sersan-studio/docuseal:${GITHUB_REF_NAME}" | gzip -1 > docuseal-image.tar.gz
+          sha256sum docuseal-image.tar.gz | tee docuseal-image.tar.gz.sha256
+          ls -la docuseal-image.tar.gz
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: docuseal-image-${{ github.ref_name }}
+          path: |
+            docuseal-image.tar.gz
+            docuseal-image.tar.gz.sha256
+          retention-days: 7
+          compression-level: 0
