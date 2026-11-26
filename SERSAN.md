@@ -27,7 +27,7 @@ Poche modifiche, tutte isolate, perché gli aggiornamenti restino facili. Le app
 - **Stile di sersan.io:**
   - colori nel tema di `tailwind.config.js` (e `tailwind.dynamic.config.js`): testo e pulsanti nel navy del marchio, blu e ciano per gli accenti, sfondi chiari freddi al posto del beige di DocuSeal; scritte dei pulsanti non tutte maiuscole;
   - `app/javascript/sersan.css`, importato da `application.scss` e `form.scss`: caratteri, titoli, bagliore ciano in alto, pulsanti e campi;
-  - caratteri **Inter** (testo, anche cirillico) e **Fraunces** (titoli), licenza OFL, in `public/sersan-fonts/` con le licenze. Switzer, il carattere di sersan.io, non ha una licenza che permetta di metterlo in un repository pubblico.
+  - caratteri **Inter** (testo, anche cirillico) e **Fraunces** (titoli), licenza OFL, in `app/javascript/sersan-fonts/` con le licenze (webpack li pubblica in `/packs/static/`). Switzer, il carattere di sersan.io, non ha una licenza che permetta di metterlo in un repository pubblico.
 - **Niente newsletter di DocuSeal:** dopo il primo accesso si va al cruscotto invece che alla pagina «Developer Newsletters», che mandava l'email a docuseal.com. Tolti controller, vista, rotta e test.
 - **Italiano:**
   - lingua predefinita dei conti nuovi (`app/models/account.rb`);
