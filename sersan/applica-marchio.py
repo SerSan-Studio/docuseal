@@ -320,6 +320,18 @@ MODIFICHE = [
      "        {{ signaturePreviewText }}\n"
      "      </button>\n"
      "    </div>\n"),
+
+    # Test: la firma ora parte scritta (per disegnare si preme «Draw»), e la frase sui link condivisi non ha più la guida.
+    ("spec/system/signing_form_spec.rb",
+     "      find('#expand_form_button').click\n      page.find('canvas').click([], { x: 150, y: 100 })\n",
+     "      find('#expand_form_button').click\n      click_button 'Draw'\n      page.find('canvas').click([], { x: 150, y: 100 })\n"),
+    ("spec/system/signing_form_spec.rb",
+     "      find('#expand_form_button').click\n      click_button 'Type'\n      fill_in 'signature_text_input', with: 'John Doe'\n",
+     "      find('#expand_form_button').click\n      fill_in 'signature_text_input', with: 'John Doe'\n"),
+    ("spec/system/signing_form_spec.rb",
+     "                                     'To resolve this, follow this guide to define the default signer details.')\n"
+     "        expect(page).to have_link('guide', href: 'https://www.docuseal.com/resources/pre-filling-recipients')\n",
+     "                                     'To resolve this, set the default signer details in the template.')\n"),
 ]
 
 # File di DocuSeal che SerSan toglie del tutto (la newsletter per sviluppatori di DocuSeal).
