@@ -296,7 +296,7 @@ ru: &ru
   save: Сохранить
   saving: Сохранение
   changes_have_been_saved: Изменения сохранены.
-  unlock_with_docuseal_pro: Доступно в DocuSeal Pro
+  unlock_with_docuseal_pro: "Недоступно"
   use_your_own_certificates_to_sign_and_verify_pdf_files: Используйте собственные сертификаты для подписания и проверки PDF-файлов.
   upload_certificate: Загрузить сертификат
   name: Имя
@@ -858,8 +858,8 @@ ru: &ru
   pro_user_seats_used: Использовано пользовательских мест Pro
   manage: Управлять
   manage_plan: Управлять тарифом
-  this_submission_has_multiple_signers_which_prevents_the_use_of_a_sharing_link_html: 'В этой отправке несколько подписантов, поэтому ссылку для доступа использовать нельзя: неясно, какой подписант отвечает за те или иные поля. Чтобы это исправить, задайте данные подписанта по умолчанию, следуя этому <a href="https://www.docuseal.com/resources/pre-filling-recipients" class="link font-bold" rel="noopener noreferrer nofollow" target="_blank">руководству</a>.'
-  welcome_to_docuseal: Добро пожаловать в DocuSeal
+  this_submission_has_multiple_signers_which_prevents_the_use_of_a_sharing_link_html: "В этой отправке несколько подписантов, поэтому ссылку для доступа использовать нельзя: неясно, какой подписант отвечает за те или иные поля. Чтобы это исправить, задайте в шаблоне данные подписанта по умолчанию."
+  welcome_to_docuseal: "Добро пожаловать в SerSan Sign"
   start_a_quick_tour_to_learn_how_to_create_and_send_your_first_document: Пройдите короткий тур и узнайте, как создать и отправить свой первый документ
   start_tour: Начать тур
   name_a_z: По названию (А–Я)
@@ -940,8 +940,8 @@ ru: &ru
   reindex: Переиндексировать
   build_search_index: Создать поисковый индекс
   require_two_factor_authentication_2fa_with_an_authenticator_app_e_g_google_authenticator_authy_all_users_signing_documents_must_pass_the_second_factor_verification_using_a_secure_code_in_addition_to_their_password: Требовать двухфакторную аутентификацию (2FA) через приложение-аутентификатор (например, Google Authenticator, Authy). Все пользователи, подписывающие документы, должны помимо пароля пройти проверку второго фактора с помощью защищённого кода.
-  add_a_unique_signature_id_and_timestamp_to_each_signature_for_audit_and_traceability_purposes_along_with_the_timestamp_part_of_docuseals_21_cfr_part_11_compliance_settings: Добавлять к каждой подписи уникальный ID подписи и метку времени для аудита и отслеживаемости. Входит в настройки соответствия DocuSeal требованиям 21 CFR Part 11.
-  require_signer_to_provide_a_reason_for_signing_before_completing_their_signature_e_g_approvals_certifications_part_of_docuseals_21_cfr_part_11_compliance_settings: Требовать от подписантов указывать причину подписания перед завершением подписи (например, согласование, сертификация). Входит в настройки соответствия DocuSeal требованиям 21 CFR Part 11.
+  add_a_unique_signature_id_and_timestamp_to_each_signature_for_audit_and_traceability_purposes_along_with_the_timestamp_part_of_docuseals_21_cfr_part_11_compliance_settings: "Добавлять к каждой подписи уникальный ID подписи и метку времени для аудита и отслеживаемости. Входит в настройки соответствия требованиям 21 CFR Part 11."
+  require_signer_to_provide_a_reason_for_signing_before_completing_their_signature_e_g_approvals_certifications_part_of_docuseals_21_cfr_part_11_compliance_settings: "Требовать от подписантов указывать причину подписания перед завершением подписи (например, согласование, сертификация). Входит в настройки соответствия требованиям 21 CFR Part 11."
   allow_signers_to_create_signatures_by_typing_their_name_instead_of_drawing_or_uploading_one: Разрешить подписантам создавать подпись, вводя своё имя, а не рисуя или загружая её.
   allow_signers_to_resubmit_forms_after_completion_useful_when_corrections_or_multiple_submissions_are_needed: Разрешить подписантам повторно отправлять формы после завершения — это удобно, если нужны исправления или несколько отправок.
   allow_recipients_to_decline_signing_a_document_the_decline_reason_notification_will_be_sent_to_the_signature_requester: Разрешить получателям отклонять подписание документа. Уведомление с причиной отклонения будет отправлено автору запроса на подпись.
@@ -1022,7 +1022,7 @@ ru: &ru
   mcp_token_has_been_removed: Токен MCP удалён.
   enable_mcp_server: Включить MCP-сервер
   all_existing_mcp_connections_will_be_stopped_immediately_when_this_setting_is_disabled: При отключении этой настройки все существующие подключения MCP будут немедленно разорваны.
-  connect_to_docuseal_mcp: Подключение к DocuSeal MCP
+  connect_to_docuseal_mcp: "Подключение к SerSan Sign MCP"
   add_the_following_to_your_mcp_client_configuration: Добавьте следующее в конфигурацию своего MCP-клиента
   works_with_claude_desktop_cursor_windsurf_vs_code_and_any_mcp_compatible_client: Работает с Claude Desktop, Cursor, Windsurf, VS Code и любым MCP-совместимым клиентом.
   your_email_address_has_been_changed: Адрес электронной почты изменён

@@ -248,6 +248,26 @@
       type="text"
       @input="updateWrittenSignature"
     >
+    <div
+      v-if="isTextSignature && !modelValue && !computedPreviousValue && !computedPrefillData"
+      class="flex flex-wrap gap-2 mt-3"
+      role="group"
+      :aria-label="t('signature')"
+    >
+      <button
+        v-for="font in signatureFonts"
+        :key="font.family"
+        type="button"
+        class="btn btn-sm h-auto min-h-0 py-1.5 px-4 normal-case font-normal text-2xl rounded-xl max-w-full overflow-hidden whitespace-nowrap"
+        :class="font.family === signatureFont ? 'btn-neutral' : 'btn-outline border-base-300'"
+        :style="{ fontFamily: `'${font.family}', cursive`, fontStyle: font.style || 'normal' }"
+        :aria-label="font.family"
+        :aria-pressed="font.family === signatureFont"
+        @click="selectSignatureFont(font.family)"
+      >
+        {{ signaturePreviewText }}
+      </button>
+    </div>
     <select
       v-if="withSigningReason && !isOtherReason"
       class="select base-input !text-2xl w-full mt-6 text-center"
@@ -351,6 +371,7 @@ import AppearsOn from './appears_on'
 import FileDropzone from './dropzone'
 import MarkdownContent from './markdown_content'
 import { v4 } from 'uuid'
+import { SIGNATURE_FONTS, fontsFor, fontFor, fontSpec, loadSignatureFonts } from './sersan_signature_fonts'
 
 let fontLoadPromise = null
 
@@ -472,11 +493,20 @@ export default {
       isShowQr: false,
       isOtherReason: false,
       isUsePreviousValue: true,
-      isTextSignature: !this.signatureSrc && (!!this.signatureText || this.field.preferences?.format === 'typed' || this.field.preferences?.format === 'typed_or_upload'),
+      isTextSignature: !this.signatureSrc && (!!this.signatureText || this.field.preferences?.format === 'typed' || this.field.preferences?.format === 'typed_or_upload' ||
+        (this.withTypedSignature && !['drawn', 'drawn_or_upload', 'upload'].includes(this.field.preferences?.format))),
+      signatureFont: SIGNATURE_FONTS[0].family,
+      typedText: '',
       uploadImageInputKey: Math.random().toString()
     }
   },
   computed: {
+    signatureFonts () {
+      return fontsFor(this.typedText)
+    },
+    signaturePreviewText () {
+      return this.typedText || this.submitter.name || this.t('signature')
+    },
     submitterSlug () {
       return this.submitter.slug
     },
@@ -640,15 +670,7 @@ export default {
       this.isSignatureStarted = false
     },
     loadFont () {
-      if (!fontLoadPromise) {
-        const font = new FontFace('Dancing Script', `url(${this.baseUrl}/fonts/DancingScript-Regular.otf) format("opentype")`)
-
-        fontLoadPromise = font.load().then((loadedFont) => {
-          document.fonts.add(loadedFont)
-        }).catch((error) => {
-          console.error('Font loading failed:', error)
-        })
-      }
+      fontLoadPromise = loadSignatureFonts(this.baseUrl, this.$refs.textInput?.value || this.submitter.name)
 
       return fontLoadPromise
     },
@@ -713,13 +735,18 @@ export default {
     },
     updateWrittenSignature (e) {
       this.isSignatureStarted = !!e.target.value
+      this.typedText = e.target.value
 
       const canvas = this.$refs.canvas
       const context = canvas.getContext('2d')
 
-      const fontFamily = 'Dancing Script'
-      const initialFontSize = 44
-      const fontStyle = 'italic'
+      const font = fontFor(this.signatureFont, e.target.value)
+
+      this.signatureFont = font.family
+
+      const fontFamily = `"${font.family}"`
+      const initialFontSize = font.size
+      const fontStyle = font.style
       const fontWeight = ''
 
       const setFontSize = (size) => {
@@ -742,6 +769,21 @@ export default {
       context.textAlign = 'center'
       context.clearRect(0, 0, canvas.width / scale, canvas.height / scale)
       context.fillText(e.target.value, canvas.width / 2 / scale, canvas.height / 2 / scale + 11)
+
+      if (e.target.value && !e.reloaded && !document.fonts.check(fontSpec(font), e.target.value)) {
+        loadSignatureFonts(this.baseUrl, e.target.value).then(() => {
+          if (this.$refs.textInput && this.$refs.textInput.value === e.target.value) {
+            this.updateWrittenSignature({ target: this.$refs.textInput, reloaded: true })
+          }
+        })
+      }
+    },
+    selectSignatureFont (family) {
+      this.signatureFont = family
+
+      if (this.$refs.textInput) {
+        this.updateWrittenSignature({ target: this.$refs.textInput })
+      }
     },
     toggleTextInput () {
       this.remove()

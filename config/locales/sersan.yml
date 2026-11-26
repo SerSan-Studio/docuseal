@@ -1,8 +1,22 @@
-# SerSan: scritte nostre, che DocuSeal non ha (vedi SERSAN.md). Se una lingua manca, si va sull'inglese.
-en:
+# SerSan: scritte nostre (vedi SERSAN.md). Se una lingua manca, si va sull'inglese.
+# Qui anche le scritte di DocuSeal che nominano DocuSeal, riscritte per en e it (il russo sta in ru.yml).
+# Le varianti con il paese (it-IT, en-US, en-GB) in i18n.yml hanno una copia loro delle chiavi: vanno ripetute.
+en: &sersan_en
   sersan_source_code: Source code
-it:
+  unlock_with_docuseal_pro: "Not available"
+  this_submission_has_multiple_signers_which_prevents_the_use_of_a_sharing_link_html: "This submission has multiple signers, which prevents the use of a sharing link as it's unclear which signer is responsible for specific fields. To resolve this, set the default signer details in the template."
+  welcome_to_docuseal: "Welcome to SerSan Sign"
+  require_signer_to_provide_a_reason_for_signing_before_completing_their_signature_e_g_approvals_certifications_part_of_docuseals_21_cfr_part_11_compliance_settings: "Require signers to provide a reason for signing before completing their signature (e.g., approvals, certifications). Part of the 21 CFR Part 11 compliance settings."
+  connect_to_docuseal_mcp: "Connect to SerSan Sign MCP"
+  add_a_unique_signature_id_and_timestamp_to_each_signature_for_audit_and_traceability_purposes_along_with_the_timestamp_part_of_docuseals_21_cfr_part_11_compliance_settings: "Add a unique Signature ID and timestamp to each signature for audit and traceability purposes. Part of the 21 CFR Part 11 compliance settings."
+it: &sersan_it
   sersan_source_code: Codice sorgente
+  unlock_with_docuseal_pro: "Non disponibile"
+  this_submission_has_multiple_signers_which_prevents_the_use_of_a_sharing_link_html: "Questo invio ha più firmatari, quindi non si può usare un link di condivisione: non è chiaro quale firmatario sia responsabile dei singoli campi. Per risolvere, imposta nel modello i dati predefiniti del firmatario."
+  welcome_to_docuseal: "Benvenuto in SerSan Sign"
+  require_signer_to_provide_a_reason_for_signing_before_completing_their_signature_e_g_approvals_certifications_part_of_docuseals_21_cfr_part_11_compliance_settings: "Richiedi ai firmatari di indicare il motivo della firma prima di completarla (per esempio approvazioni, certificazioni). Fa parte delle impostazioni di conformità 21 CFR Part 11."
+  connect_to_docuseal_mcp: "Connetti a SerSan Sign MCP"
+  add_a_unique_signature_id_and_timestamp_to_each_signature_for_audit_and_traceability_purposes_along_with_the_timestamp_part_of_docuseals_21_cfr_part_11_compliance_settings: "Aggiungi a ogni firma un ID univoco e la marca temporale, per audit e tracciabilità. Fa parte delle impostazioni di conformità 21 CFR Part 11."
 ru:
   sersan_source_code: Исходный код
 es:
@@ -29,3 +43,10 @@ ko:
   sersan_source_code: 소스 코드
 ja:
   sersan_source_code: ソースコード
+
+en-US:
+  <<: *sersan_en
+en-GB:
+  <<: *sersan_en
+it-IT:
+  <<: *sersan_it

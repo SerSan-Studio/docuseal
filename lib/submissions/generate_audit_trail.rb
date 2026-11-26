@@ -44,7 +44,7 @@ module Submissions
 
         io = StringIO.new
 
-        document.trailer.info[:Creator] = "#{Docuseal.product_name} (#{Docuseal::PRODUCT_URL})"
+        document.trailer.info[:Creator] = Docuseal.product_name
 
         if pkcs
           sign_params = {
@@ -568,7 +568,7 @@ module Submissions
       column.image(PdfIcons.logo_io, width: 40, height: 40, position: :float)
 
       column.formatted_text([{ text: Docuseal.product_name,
-                               link: Docuseal::PRODUCT_EMAIL_URL }],
+                               link: 'https://sersan.io' }],
                             font_size: 20,
                             font: [FONT_NAME, { variant: :bold }],
                             width: 100,
