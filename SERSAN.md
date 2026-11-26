@@ -20,7 +20,7 @@ Poche modifiche, tutte isolate, perché gli aggiornamenti restino facili. Le app
 - **Nome:** «SerSan Sign», da `PRODUCT_NAME` in `lib/docuseal.rb`. Lo usano anche titoli, meta, manifest, email di sistema e PDF. Nello stesso file `GITHUB_URL` punta a questo fork. Nella barra in alto «SerSan» è pieno e «Sign» è nel blu del marchio (`shared/_title.html.erb`).
 - **Logo SerSan**, lo stesso di sersan.io (le due metà dell'esagono, navy e blu):
   - `public/sersan-logo.svg`, che usano `app/views/shared/_logo.html.erb` e `app/javascript/template_builder/logo.vue`;
-  - favicon e icone in `public/` (la favicon SVG diventa chiara se il browser è scuro);
+  - favicon e icone in `public/` (la favicon SVG diventa chiara se il browser è scuro). I browser le tengono in cache 180 giorni: negli indirizzi c'è `?v=…` (costante `ICONE` in `applica-marchio.py`), da cambiare quando cambiano logo o icone;
   - logo del registro di firma e scritta del timbro nei PDF, in `lib/pdf_icons/`;
   - le forme stanno in `sersan/marchio.swift`, che disegna i PNG.
 - **Attribuzione:** «Powered by DocuSeal» resta, con accanto il link «Codice sorgente» nella lingua di chi legge (chiave `sersan_source_code`: `config/locales/sersan.yml` per le pagine, `en` e `it` in `submission_form/i18n.js` e `i18n_ru.js` per chi firma). File: `shared/_powered_by.html.erb`, `submission_form/completed.vue`, `templates_share_link_qr/_branding.html.erb` e `shared/_email_attribution.html.erb`.

@@ -12,6 +12,9 @@ import sys
 from pathlib import Path
 
 FORK = "https://github.com/SerSan-Studio/docuseal"
+# Versione delle icone negli indirizzi: le icone hanno 180 giorni di cache nei browser, quindi quando cambiano
+# logo o icone si cambia questa, e i browser le riscaricano (come fa sersan.io con favicon.svg?v=13).
+ICONE = "?v=sersan2"
 
 # (file, testo originale, testo SerSan)
 MODIFICHE = [
@@ -43,11 +46,18 @@ MODIFICHE = [
 
     # Logo: il marchio di sersan.io (public/sersan-logo.svg, da sersan/genera-icone.sh) al posto di quello di DocuSeal.
     ("app/views/shared/_logo.html.erb", None,
-     '<img src="/sersan-logo.svg" alt="SerSan" class="<%= local_assigns[:class] %>" '
+     f'<img src="/sersan-logo.svg{ICONE}" alt="SerSan" class="<%= local_assigns[:class] %>" '
      'height="<%= local_assigns.fetch(:height, \'37\') %>" width="<%= local_assigns.fetch(:width, \'37\') %>">\n'),
     ("app/javascript/template_builder/logo.vue", None,
-     '<template>\n  <img\n    src="/sersan-logo.svg"\n    alt="SerSan"\n    height="40"\n    width="40"\n  >\n</template>\n\n'
+     f'<template>\n  <img\n    src="/sersan-logo.svg{ICONE}"\n    alt="SerSan"\n    height="40"\n    width="40"\n  >\n</template>\n\n'
      "<script>\nexport default {\n  name: 'ProjectLogo'\n}\n</script>\n"),
+    # Icone e anteprima con la versione nell'indirizzo (vedi ICONE in cima), anche nel manifest dell'app.
+    *[("app/views/shared/_meta.html.erb", f'href="/{f}">', f'href="/{f}{ICONE}">')
+      for f in ("apple-icon-180x180.png", "favicon-32x32.png", "favicon-96x96.png", "favicon-16x16.png", "favicon.svg")],
+    ("app/views/shared/_meta.html.erb", '"#{root_url}preview.png"', f'"#{{root_url}}preview.png{ICONE}"', 2),
+    ("app/views/pwa/manifest.json.erb", '"src": "/favicon.svg",', f'"src": "/favicon.svg{ICONE}",'),
+    ("app/views/pwa/manifest.json.erb", '"src": "/apple-touch-icon.png",', f'"src": "/apple-touch-icon.png{ICONE}",'),
+    ("app/views/pwa/manifest.json.erb", '"#FAF7F4"', '"#F7F9FC"', 2),
     # Le iniziali dell'utente in alto a destra: ciano invece del viola di DocuSeal.
     ("app/views/shared/_navbar.html.erb", "bg-base-content text-purple-300 rounded-full",
      "bg-base-content text-cyan-300 rounded-full"),
